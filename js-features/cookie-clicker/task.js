@@ -1,6 +1,5 @@
 const cookie = document.getElementById('cookie');
 const counter = document.getElementById('clicker__counter');
-let sizeFlag = true;
 
 cookie.addEventListener('click', () => {
 	counter.textContent = parseInt(counter.textContent) + 1;
