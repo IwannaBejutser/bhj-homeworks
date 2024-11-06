@@ -1,19 +1,16 @@
-const revealBlock = document.querySelector('.reveal');
+const revealBlocks = document.querySelectorAll('.reveal');
 
 function isVisible(el) {
-	const { top, bottom } = revealBlock.getBoundingClientRect();
-
-	if (bottom < 0) {
-		return false;
-	}
-
-	if (top > window.innerHeight) {
-		return false;
-	}
-
-	revealBlock.classList.add('reveal_active');
+	const { top, bottom } = el.getBoundingClientRect();
+	return top < window.innerHeight && bottom > 0;
 }
 
 setInterval(() => {
-	console.log(isVisible(revealBlock));
-});
+	revealBlocks.forEach((block) => {
+		if (isVisible(block)) {
+			block.classList.add('reveal_active');
+		} else {
+			block.classList.remove('reveal_active');
+		}
+	});
+}, 100);
